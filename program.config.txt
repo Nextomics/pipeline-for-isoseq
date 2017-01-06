@@ -1,0 +1,3 @@
+gmap=/home/xiaoyh/bin/gmap
+samtools=/home/liangfan/bin/backup/samtools-1.2/samtools
+bcftools=/home/liangfan/bin/backup/bcftools-1.1/bcftools
