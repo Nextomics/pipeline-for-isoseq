@@ -1,19 +1,3 @@
-### program list
-##smrtanalysis (http://www.pacb.com/products-and-services/analytical-software/smrt-analysis/)
-## gmap (http://research-pub.gene.com/gmap/)
-## phase_allotetraploid_pipeline.pl  (attached)
-## collapse_isoforms_by_sam.py from pbtranscript-tofu (https://github.com/PacificBiosciences/cDNA_primer)
-## analysis_cluster.pl in-house Perl script (attached)
-## bed2cDNA_match.pl in-house Perl script (attached)
-## samtools (http://www.htslib.org/)
-## bedtools (https://github.com/arq5x/bedtools2/)
-## alternative_splice.py developed by ourselves (attached)
-## polyA_position.pl (attached)
-## fusion_finder.py (https://github.com/PacificBiosciences/cDNA_primer/blob/master/pbtranscript-tofu/pbtranscript/pbtools/pbtranscript/fusion_finder.py)
-## PLEKModelling.py from plek (https://sourceforge.net/projects/plek/files/)
-## PLEK.py from plek (https://sourceforge.net/projects/plek/files/)
-
- 
 1. Quality control
 2. Classification
 #step 1 QC and Classification, protocol version="2.3.0" id="RS_IsoSeq.1", default  parameters.
@@ -55,3 +39,18 @@ python fusion_finder.py --input flnc.fastq --fq -s flnc.sort.sam -o ./fusion
 python PLEKModelling.py -lncRNA high_quality_lncRNA.fa -prefix species -mRNA mRNA.fasta
 
 python PLEK.py  -fasta flnc.fasta -out lncRNA.predicted -thread 10 -range species.range -model species.model -k 4
+
+### program list
+##smrtanalysis (http://www.pacb.com/products-and-services/analytical-software/smrt-analysis/)
+## gmap (http://research-pub.gene.com/gmap/)
+## phase_allotetraploid_pipeline.pl  (attached)
+## collapse_isoforms_by_sam.py from pbtranscript-tofu (https://github.com/PacificBiosciences/cDNA_primer)
+## analysis_cluster.pl in-house Perl script (attached)
+## bed2cDNA_match.pl in-house Perl script (attached)
+## samtools (http://www.htslib.org/)
+## bedtools (https://github.com/arq5x/bedtools2/)
+## alternative_splice.py developed by ourselves (attached)
+## polyA_position.pl (attached)
+## fusion_finder.py (https://github.com/PacificBiosciences/cDNA_primer/blob/master/pbtranscript-tofu/pbtranscript/pbtools/pbtranscript/fusion_finder.py)
+## PLEKModelling.py from plek (https://sourceforge.net/projects/plek/files/)
+## PLEK.py from plek (https://sourceforge.net/projects/plek/files/)
