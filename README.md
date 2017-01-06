@@ -1,9 +1,10 @@
 1. Quality control
+
 2. Classification
 #step 1 QC and Classification, protocol version="2.3.0" id="RS_IsoSeq.1", default  parameters.
 smrtpipe.py --distribute  --params=settings.xml --output=outputdir xml:input.xml 2> smrtpipe.stderr 1> smrtpipe.stdout
-3. Clustering
 
+3. Clustering
 #  step 1 mapping and phasing
 perl phase_allotetraploid_pipeline.pl –flnc flnc.fastq --gmap_genome_directory database/ --gmap_genome_database databasename –outdir ./result --reference_fasta ref.fasta
 
@@ -22,7 +23,6 @@ samtools view -bS all.consensus.collapsed.rep.fq.sam > all.consensus.bam
 bedtools bamtobed  -split -i all.consensus.bam > all.consensus.bed
 
 perl bed2cDNA_match.pl all.consensus.collapsed.rep.fq all.consensus.collapsed.rep.fq.sam > all.consensus.cDNA_match.gff
-
 
 4. Transcriptome analysis
 
