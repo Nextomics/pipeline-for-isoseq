@@ -2,7 +2,7 @@
 ===
 2. Classification
 ===
-#step 1 QC and Classification, protocol version="2.3.0" id="RS_IsoSeq.1", default  parameters.
+step 1 QC and Classification, protocol version="2.3.0" id="RS_IsoSeq.1", default  parameters.
 smrtpipe.py --distribute  --params=settings.xml --output=outputdir xml:input.xml 2> smrtpipe.stderr 1> smrtpipe.stdout
 
 3. Clustering
