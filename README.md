@@ -65,6 +65,6 @@ Finding non-coding RNA.
 - bedtools (https://github.com/arq5x/bedtools2/)
 - alternative_splice.py developed by ourselves (attached)
 - polyA_position.pl (attached)
-- fusion_finder.py (https://github.com/PacificBiosciences/cDNA_primer/blob/master/pbtranscript-tofu/pbtranscript/- pbtools/pbtranscript/fusion_finder.py)
+- fusion_finder.py (https://github.com/PacificBiosciences/cDNA_primer/blob/master/pbtranscript-tofu/pbtranscript/pbtools/pbtranscript/fusion_finder.py)
 - PLEKModelling.py from plek (https://sourceforge.net/projects/plek/files/)
 - PLEK.py from plek (https://sourceforge.net/projects/plek/files/)
