@@ -2,7 +2,7 @@
 
 #### 2. Classification
 
-- QC and Classification, protocol version="2.3.0" id="RS_IsoSeq.1", default  parameters.
+QC and Classification, protocol version="2.3.0" id="RS_IsoSeq.1", default  parameters.
 
 
 ```
@@ -10,24 +10,24 @@
 ```
 
 #### 3. Clustering
-- mapping and phasing
+Mapping and phasing
 ```
 	perl phase_allotetraploid_pipeline.pl –flnc flnc.fastq --gmap_genome_directory database/ --gmap_genome_database databasename –outdir ./result --reference_fasta ref.fasta
 ```
 
-- doing isoform-level-cluster according to alignments.
+Doing isoform-level-cluster according to alignments.
 ``` 
 	python collapse_isoforms_by_sam.py -c 0.90 -i 0.90 --input flnc.fastq --fq -s flnc.sort.sam -o all
 ```
-- consensus, each cluster generate one consensus sequence.
+Consensus, each cluster generate one consensus sequence.
 ```
 	perl analysis_cluster.pl all.collapsed.group.txt flnc.sort.sam flnc.fastq  > flnc.best.sort.sam
 ```
-- doing isoform-level-cluster again.
+Doing isoform-level-cluster again.
 ```
 	python collapse_isoforms_by_sam.py -c 0.90 -i 0.90 --input chose.fq --fq -s flnc.best.sort.sam -o all.consensus
 ```
-- convert bam format to gff format.
+Convert bam format to gff format.
 ```
 	samtools view -bS all.consensus.collapsed.rep.fq.sam > all.consensus.bam
 	bedtools bamtobed  -split -i all.consensus.bam > all.consensus.bed
@@ -35,20 +35,20 @@
 ```
 
 #### 4. Transcriptome analysis
-- alternative splicing analysis.
+Alternative splicing analysis.
 ```
 	python alternative_splice.py -i all.consensus.cDNA_match.gff -g ref.gtf -f ref.fasta -o ./ -os -as -ats T -op
 ```
 
-- alternative polyadenylation analysis.
+Alternative polyadenylation analysis.
 ```
 	perl polyA_position.pl all.consensus.collapsed.gff all.consensus.collapsed.rep.fq flnc.sort.sam > transcript_polyA.result
 ```
-- finding fusion gene.
+Finding fusion gene.
 ```
 	python fusion_finder.py --input flnc.fastq --fq -s flnc.sort.sam -o ./fusion
 ``` 
-- finding non-coding RNA.
+Finding non-coding RNA.
 ```
 	python PLEKModelling.py -lncRNA high_quality_lncRNA.fa -prefix species -mRNA mRNA.fasta
 	python PLEK.py  -fasta flnc.fasta -out lncRNA.predicted -thread 10 -range species.range -model species.model -k 4
