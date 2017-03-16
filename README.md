@@ -1,1 +1,50 @@
-1. Quality control <br>2. Classification <br>step 1 QC and Classification, protocol version="2.3.0" id="RS_IsoSeq.1", default parameters. <br>smrtpipe.py --distribute --params=settings.xml --output=outputdir xml:input.xml 2&gt; smrtpipe.stderr 1&gt; smrtpipe.stdout <br> <br>3. Clustering <br>step 1 mapping and phasing <br> perl phase_allotetraploid_pipeline.pl –flnc flnc.fastq --gmap_genome_directory database/ --gmap_genome_database databasename –outdir ./result --reference_fasta ref.fasta <br>step 2 doing isoform-level-cluster according to alignments. <br> python collapse_isoforms_by_sam.py -c 0.90 -i 0.90 --input flnc.fastq --fq -s flnc.sort.sam -o all <br>step 3 consensus, each cluster generate one consensus sequence. <br> perl analysis_cluster.pl all.collapsed.group.txt flnc.sort.sam flnc.fastq &gt; flnc.best.sort.sam <br>step 4 doing isoform-level-cluster again. <br> python collapse_isoforms_by_sam.py -c 0.90 -i 0.90 --input chose.fq --fq -s flnc.best.sort.sam -o all.consensus <br>step 5 convert bam format to gff format. <br> samtools view -bS all.consensus.collapsed.rep.fq.sam &gt; all.consensus.bam <br> bedtools bamtobed -split -i all.consensus.bam &gt; all.consensus.bed <br> perl bed2cDNA_match.pl all.consensus.collapsed.rep.fq all.consensus.collapsed.rep.fq.sam &gt; all.consensus.cDNA_match.gff <br> <br>4. Transcriptome analysis <br>step 1 alternative splicing analysis. <br> python alternative_splice.py -i all.consensus.cDNA_match.gff -g ref.gtf -f ref.fasta -o ./ -os -as -ats T -op <br>step 2 alternative polyadenylation analysis. <br> perl polyA_position.pl all.consensus.collapsed.gff all.consensus.collapsed.rep.fq flnc.sort.sam &gt; transcript_polyA.result <br>step 3 finding fusion gene. <br>python fusion_finder.py --input flnc.fastq --fq -s flnc.sort.sam -o ./fusion <br>step 4 finding non-coding RNA. <br> python PLEKModelling.py -lncRNA high_quality_lncRNA.fa -prefix species -mRNA mRNA.fasta <br> python PLEK.py -fasta flnc.fasta -out lncRNA.predicted -thread 10 -range species.range -model species.model -k 4 <br> <br>5.program list <br>smrtanalysis (http://www.pacb.com/products-and-services/analytical-software/smrt-analysis/) <br>gmap (http://research-pub.gene.com/gmap/) <br>phase_allotetraploid_pipeline.pl (attached) <br>collapse_isoforms_by_sam.py from pbtranscript-tofu (https://github.com/PacificBiosciences/cDNA_primer) <br>analysis_cluster.pl in-house Perl script (attached) <br>bed2cDNA_match.pl in-house Perl script (attached) <br>samtools (http://www.htslib.org/) <br>bedtools (https://github.com/arq5x/bedtools2/) <br>alternative_splice.py developed by ourselves (attached) <br>polyA_position.pl (attached) <br>fusion_finder.py (https://github.com/PacificBiosciences/cDNA_primer/blob/master/pbtranscript-tofu/pbtranscript/pbtools/pbtranscript/fusion_finder.py) <br>PLEKModelling.py from plek (https://sourceforge.net/projects/plek/files/) <br>PLEK.py from plek (https://sourceforge.net/projects/plek/files/)&nbsp;<br></span>
+<ol>
+<li>Quality control</li>
+<li>
+<p>Classification
+step 1 QC and Classification, protocol version=&quot;2.3.0&quot; id=&quot;RS_IsoSeq.1&quot;, default  parameters.
+smrtpipe.py --distribute  --params=settings.xml --output=outputdir xml:input.xml 2&gt; smrtpipe.stderr 1&gt; smrtpipe.stdout</p>
+</li>
+<li>
+<p>Clustering
+step 1 mapping and phasing
+perl phase<em>allotetraploid</em>pipeline.pl –flnc flnc.fastq --gmap<em>genome<em>directory database/ --gmap</em>genome</em>database databasename –outdir ./result --reference<em>fasta ref.fasta
+step 2 doing isoform-level-cluster according to alignments. 
+python collapse</em>isoforms<em>by<em>sam.py -c 0.90 -i 0.90 --input flnc.fastq --fq -s flnc.sort.sam -o all
+step 3 consensus, each cluster generate one consensus sequence.
+perl analysis</em>cluster.pl all.collapsed.group.txt flnc.sort.sam flnc.fastq  &gt; flnc.best.sort.sam
+step 4 doing isoform-level-cluster again.
+python collapse<em>isoforms<em>by</em>sam.py -c 0.90 -i 0.90 --input chose.fq --fq -s flnc.best.sort.sam -o all.consensus
+step 5 convert bam format to gff format.
+samtools view -bS all.consensus.collapsed.rep.fq.sam &gt; all.consensus.bam
+bedtools bamtobed  -split -i all.consensus.bam &gt; all.consensus.bed
+perl bed2cDNA</em>match.pl all.consensus.collapsed.rep.fq all.consensus.collapsed.rep.fq.sam &gt; all.consensus.cDNA</em>match.gff</p>
+</li>
+<li>
+<p>Transcriptome analysis
+step 1 alternative splicing analysis.
+python alternative<em>splice.py -i all.consensus.cDNA</em>match.gff -g ref.gtf -f ref.fasta -o ./ -os -as -ats T -op
+step 2 alternative polyadenylation analysis.
+perl polyA<em>position.pl all.consensus.collapsed.gff all.consensus.collapsed.rep.fq flnc.sort.sam &gt; transcript<em>polyA.result
+step 3 finding fusion gene.
+python fusion</em>finder.py --input flnc.fastq --fq -s flnc.sort.sam -o ./fusion 
+step 4 finding non-coding RNA.
+python PLEKModelling.py -lncRNA high</em>quality_lncRNA.fa -prefix species -mRNA mRNA.fasta
+python PLEK.py  -fasta flnc.fasta -out lncRNA.predicted -thread 10 -range species.range -model species.model -k 4</p>
+</li>
+</ol>
+<p>5.program list
+smrtanalysis (http://www.pacb.com/products-and-services/analytical-software/smrt-analysis/)
+gmap (http://research-pub.gene.com/gmap/)
+phase<em>allotetraploid</em>pipeline.pl  (attached)
+collapse<em>isoforms<em>by</em>sam.py from pbtranscript-tofu (https://github.com/PacificBiosciences/cDNA</em>primer)
+analysis<em>cluster.pl in-house Perl script (attached)
+bed2cDNA</em>match.pl in-house Perl script (attached)
+samtools (http://www.htslib.org/)
+bedtools (https://github.com/arq5x/bedtools2/)
+alternative_splice.py developed by ourselves (attached)
+polyA<em>position.pl (attached)
+fusion</em>finder.py (https://github.com/PacificBiosciences/cDNA<em>primer/blob/master/pbtranscript-tofu/pbtranscript/pbtools/pbtranscript/fusion</em>finder.py)
+PLEKModelling.py from plek (https://sourceforge.net/projects/plek/files/)
+PLEK.py from plek (https://sourceforge.net/projects/plek/files/)</p>
+
