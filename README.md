@@ -1,6 +1,6 @@
-#### 1. Quality control
+### 1. Quality control
 
-#### 2. Classification
+### 2. Classification
 
 QC and Classification, protocol version="2.3.0" id="RS_IsoSeq.1", default  parameters.
 
@@ -9,7 +9,7 @@ QC and Classification, protocol version="2.3.0" id="RS_IsoSeq.1", default  param
 	smrtpipe.py --distribute  --params=settings.xml --output=outputdir xml:input.xml 2> smrtpipe.stderr 1> smrtpipe.stdout
 ```
 
-#### 3. Clustering
+### 3. Clustering
 Mapping and phasing
 ```
 	perl phase_allotetraploid_pipeline.pl –flnc flnc.fastq --gmap_genome_directory database/ --gmap_genome_database databasename –outdir ./result --reference_fasta ref.fasta
@@ -34,7 +34,7 @@ Convert bam format to gff format.
 	perl bed2cDNA_match.pl all.consensus.collapsed.rep.fq all.consensus.collapsed.rep.fq.sam > all.consensus.cDNA_match.gff
 ```
 
-#### 4. Transcriptome analysis
+### 4. Transcriptome analysis
 Alternative splicing analysis.
 ```
 	python alternative_splice.py -i all.consensus.cDNA_match.gff -g ref.gtf -f ref.fasta -o ./ -os -as -ats T -op
@@ -54,7 +54,7 @@ Finding non-coding RNA.
 	python PLEK.py  -fasta flnc.fasta -out lncRNA.predicted -thread 10 -range species.range -model species.model -k 4
 ```
 
-#### 5. program list
+### 5. program list
 - smrtanalysis (http://www.pacb.com/products-and-services/analytical-software/smrt-analysis/)
 - gmap (http://research-pub.gene.com/gmap/)
 - phase_allotetraploid_pipeline.pl  (attached)
