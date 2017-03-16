@@ -1,10 +1,12 @@
 1. Quality control
-
+==
 2. Classification
+==
 step 1 QC and Classification, protocol version="2.3.0" id="RS_IsoSeq.1", default  parameters.
 smrtpipe.py --distribute  --params=settings.xml --output=outputdir xml:input.xml 2> smrtpipe.stderr 1> smrtpipe.stdout
 
 3. Clustering
+==
 step 1 mapping and phasing
   perl phase_allotetraploid_pipeline.pl –flnc flnc.fastq --gmap_genome_directory database/ --gmap_genome_database databasename –outdir ./result --reference_fasta ref.fasta
 step 2 doing isoform-level-cluster according to alignments. 
@@ -19,6 +21,7 @@ step 5 convert bam format to gff format.
   perl bed2cDNA_match.pl all.consensus.collapsed.rep.fq all.consensus.collapsed.rep.fq.sam > all.consensus.cDNA_match.gff
 
 4. Transcriptome analysis
+==
 step 1 alternative splicing analysis.
   python alternative_splice.py -i all.consensus.cDNA_match.gff -g ref.gtf -f ref.fasta -o ./ -os -as -ats T -op
 step 2 alternative polyadenylation analysis.
@@ -29,7 +32,8 @@ step 4 finding non-coding RNA.
   python PLEKModelling.py -lncRNA high_quality_lncRNA.fa -prefix species -mRNA mRNA.fasta
   python PLEK.py  -fasta flnc.fasta -out lncRNA.predicted -thread 10 -range species.range -model species.model -k 4
 
-program list
+5.program list
+==
 smrtanalysis (http://www.pacb.com/products-and-services/analytical-software/smrt-analysis/)
 gmap (http://research-pub.gene.com/gmap/)
 phase_allotetraploid_pipeline.pl  (attached)
