@@ -55,6 +55,9 @@ Finding non-coding RNA.
 ```
 
 ### 5. program list
+Please provide your an email address for us to send you the latest version of all the scripts.
+Email address: qinjh@nextomics.org.
+
 - smrtanalysis (http://www.pacb.com/products-and-services/analytical-software/smrt-analysis/)
 - gmap (http://research-pub.gene.com/gmap/)
 - phase_allotetraploid_pipeline.pl  (attached)
