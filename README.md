@@ -21,8 +21,7 @@ Doing isoform-level-cluster according to alignments.
 ```
 Consensus, each cluster generate one consensus sequence.
 ```
-	perl analysis_cluster.pl all.collapsed.group.txt flnc.sort.sam flnc.fastq  > flnc.best.sort.sam
-```
+	perl analysis_cluster.pl all.collapsed.group.txt flnc.sort.sam flnc.fastq  > flnc.best.sort.```
 Doing isoform-level-cluster again.
 ```
 	python collapse_isoforms_by_sam.py -c 0.90 -i 0.90 --input chose.fq --fq -s flnc.best.sort.sam -o all.consensus
@@ -56,7 +55,7 @@ Finding non-coding RNA.
 
 ### 5. program list
 #### Please provide your email address for us to send you the latest version of all the scripts.
-#### Email address: qinjh@nextomics.org.
+#### Email address: zhouhongmei@grandomics.com.
 - smrtanalysis (http://www.pacb.com/products-and-services/analytical-software/smrt-analysis/)
 - gmap (http://research-pub.gene.com/gmap/)
 - phase_allotetraploid_pipeline.pl  (attached)
