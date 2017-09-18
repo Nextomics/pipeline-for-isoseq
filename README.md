@@ -1,3 +1,4 @@
+
 ### 1. Quality control
 
 ### 2. Classification
@@ -21,7 +22,8 @@ Doing isoform-level-cluster according to alignments.
 ```
 Consensus, each cluster generate one consensus sequence.
 ```
-	perl analysis_cluster.pl all.collapsed.group.txt flnc.sort.sam flnc.fastq  > flnc.best.sort.```
+	perl analysis_cluster.pl all.collapsed.group.txt flnc.sort.sam flnc.fastq  > flnc.best.sort.sam
+```
 Doing isoform-level-cluster again.
 ```
 	python collapse_isoforms_by_sam.py -c 0.90 -i 0.90 --input chose.fq --fq -s flnc.best.sort.sam -o all.consensus
