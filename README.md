@@ -56,7 +56,7 @@ Finding non-coding RNA.
 ```
 
 ### 5. program list
-#### Please provide your email address for us to send you the latest version of all the scripts.
+#### changed to https://github.com/fancy1124/pipeline-for-isoseq
 - smrtanalysis (http://www.pacb.com/products-and-services/analytical-software/smrt-analysis/)
 - gmap (http://research-pub.gene.com/gmap/)
 - phase_allotetraploid_pipeline.pl  (attached)
