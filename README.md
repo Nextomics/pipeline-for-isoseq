@@ -61,12 +61,12 @@ Finding non-coding RNA.
 - gmap (http://research-pub.gene.com/gmap/)
 - phase_allotetraploid_pipeline.pl  (attached)
 - collapse_isoforms_by_sam.py from pbtranscript-tofu (https://github.com/PacificBiosciences/cDNA_primer)
-- analysis_cluster.pl in-house Perl script (attached)
-- bed2cDNA_match.pl in-house Perl script (attached)
+- analysis_cluster.pl in-house Perl script 
+- bed2cDNA_match.pl in-house Perl script 
 - samtools (http://www.htslib.org/)
 - bedtools (https://github.com/arq5x/bedtools2/)
 - alternative_splice.py developed by ourselves (attached)
-- polyA_position.pl (attached)
+- polyA_position.pl 
 - fusion_finder.py (https://github.com/PacificBiosciences/cDNA_primer/blob/master/pbtranscript-tofu/pbtranscript/pbtools/pbtranscript/fusion_finder.py)
 - PLEKModelling.py from plek (https://sourceforge.net/projects/plek/files/)
 - PLEK.py from plek (https://sourceforge.net/projects/plek/files/)
